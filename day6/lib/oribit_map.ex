@@ -53,10 +53,13 @@ defmodule OribitMap do
         
         orbits = orbits |> Map.put_new(parent, "") |> Map.put(node, parent)
       end)
-  
+      
+    #finding complete path to root node, from both sides.  
     pathforYOU = orbitalMap |> findPathToRoot("YOU")
     pathforSAN = orbitalMap |> findPathToRoot("SAN")
       
+
+    #finding number of step from sides unitl commmon ancesstor
     Enum.count(pathforYOU -- pathforSAN) + Enum.count(pathforSAN -- pathforYOU)
 
   end
